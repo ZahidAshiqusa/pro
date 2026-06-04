@@ -1,0 +1,60 @@
+{
+  "name": "PersonAttendance",
+  "type": "object",
+  "properties": {
+    "worker_name": {
+      "type": "string",
+      "enum": [
+        "Nadeem",
+        "Zeeshan"
+      ],
+      "description": "Worker name"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "entry",
+        "exit"
+      ],
+      "description": "Entry or Exit"
+    },
+    "date": {
+      "type": "string",
+      "description": "Date of the record YYYY-MM-DD"
+    },
+    "time": {
+      "type": "string",
+      "description": "Time of the record HH:MM"
+    }
+  },
+  "required": [
+    "worker_name",
+    "action",
+    "date",
+    "time"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "id": {
+          "$exists": true
+        }
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
