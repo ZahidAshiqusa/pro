@@ -1,0 +1,54 @@
+{
+  "name": "Sample",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "in",
+        "out"
+      ],
+      "description": "Sample in or out"
+    },
+    "person_name": {
+      "type": "string",
+      "description": "Person name"
+    },
+    "pieces": {
+      "type": "number",
+      "description": "Number of pieces (optional)"
+    },
+    "program": {
+      "type": "string",
+      "description": "Program name (optional)"
+    }
+  },
+  "required": [
+    "type",
+    "person_name"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "id": {
+          "$exists": true
+        }
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
