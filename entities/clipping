@@ -1,0 +1,50 @@
+{
+  "name": "Clipping",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "in",
+        "out"
+      ],
+      "description": "Clipped in or out for clipping"
+    },
+    "clipper_name": {
+      "type": "string",
+      "description": "Clipper name"
+    },
+    "size": {
+      "type": "string",
+      "description": "Size detail"
+    }
+  },
+  "required": [
+    "type",
+    "clipper_name"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "id": {
+          "$exists": true
+        }
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
