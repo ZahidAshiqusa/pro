@@ -1,0 +1,57 @@
+{
+  "name": "Maintenance",
+  "type": "object",
+  "properties": {
+    "category": {
+      "type": "string",
+      "enum": [
+        "complaint",
+        "issue",
+        "service",
+        "urgent"
+      ],
+      "description": "Maintenance category"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject of the entry"
+    },
+    "object_detail": {
+      "type": "string",
+      "description": "Object/details"
+    },
+    "is_solved": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the issue is solved"
+    }
+  },
+  "required": [
+    "category",
+    "subject"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "id": {
+          "$exists": true
+        }
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
