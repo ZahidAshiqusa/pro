@@ -1,0 +1,63 @@
+{
+  "name": "Item",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Item name"
+    },
+    "number": {
+      "type": "string",
+      "description": "Serial number (optional)"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Quantity of item",
+      "default": 1
+    },
+    "model": {
+      "type": "string",
+      "description": "Model name (optional)"
+    },
+    "person_name": {
+      "type": "string",
+      "description": "Person name (optional)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "in_use",
+        "out_of_stock"
+      ],
+      "default": "available"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "id": {
+          "$exists": true
+        }
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
